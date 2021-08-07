@@ -43,17 +43,11 @@ $lots = [
         'image' => 'img/lot-6.jpg'
     ]
 ];
-function formate_cost($number)
-{
-    $form_cost = "";
-    $ceil_num = ceil($number);
-    if ($ceil_num < 1000) {
-        $format_num = $ceil_num;
-    } else {
-        $format_num = number_format($ceil_num, 0, '', ' ');
-    }
-    print $form_cost = $format_num . " " . "&#8381";
-};
+                function formate_cost($form_cost) {
+                    $form_cost = ceil($form_cost);
+                    $form_cost = ($form_cost < 1000) ? $form_cost : number_format($form_cost, 0, '', ' ');
+                    return $form_cost . ' ' . '&#8381';
+                };
 ?>
 <!DOCTYPE html>
 <html lang="ru">
