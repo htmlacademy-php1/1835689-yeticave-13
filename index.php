@@ -43,6 +43,11 @@ $lots = [
         'image' => 'img/lot-6.jpg'
     ]
 ];
+                function formate_cost($form_cost) {
+                    $form_cost = ceil($form_cost);
+                    $form_cost = ($form_cost < 1000) ? $form_cost : number_format($form_cost, 0, '', ' ');
+                    return $form_cost . ' ' . '&#8381';
+                };
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -113,7 +118,7 @@ $lots = [
                     <?php foreach ($lots as $lot_key => $lot_val) : ?>
                         <li class="lots__item lot">
                             <div class="lot__image">
-                                <img src="<?= $lot_val['image']; ?>" width="350" height="260" alt="<?=$lot_val['title']; ?>">
+                                <img src="<?= $lot_val['image']; ?>" width="350" height="260" alt="<?= $lot_val['title']; ?>">
                             </div>
                             <div class="lot__info">
                                 <span class="lot__category"><?= $categories[$lot_val['category_id']]; ?></span>
@@ -121,7 +126,7 @@ $lots = [
                                 <div class="lot__state">
                                     <div class="lot__rate">
                                         <span class="lot__amount">Стартовая цена</span>
-                                        <span class="lot__cost"><?= $lot_val['cost']; ?><b class="rub">р</b></span>
+                                        <span class="lot__cost"><?= formate_cost($lot_val['cost']); ?></span>
                                     </div>
                                     <div class="lot__timer timer">
                                         12:23
