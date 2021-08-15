@@ -11,7 +11,7 @@ $lots = [
         'category_id' => '0',
         'cost' => '10999',
         'image' => 'img/lot-1.jpg',
-        'date_exp' => '2021-08-14'
+        'date_exp' => '2021-08-15'
     ],
     [
         'title' => 'DC Ply Mens 2016/2017 Snowboard',
