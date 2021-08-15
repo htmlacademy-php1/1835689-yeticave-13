@@ -29,8 +29,8 @@
                                         <span class="lot__amount">Стартовая цена</span>
                                         <span class="lot__cost"><?= formate_cost($lot_val['cost']); ?></span>
                                     </div>
-                                    <div class="lot__timer timer">
-                                        12:23
+                                    <? $res = get_dt_range($lot_val['date_exp']); ?>
+                                    <div class="lot__timer timer <?= ($res < 1) ? 'timer--finishing' : ''; ?>"><?= $res; ?>
                                     </div>
                                 </div>
                             </div>
