@@ -30,8 +30,6 @@ CREATE TABLE users (
     name CHAR(100) NOT NULL,
     password CHAR(32) NOT NULL UNIQUE,
     contact VARCHAR NOT NULL,
-    lot_id INT(11) UNSIGNED,
-    rate_id INT(11) UNSIGNED
 );
 
 CREATE TABLE rates (
@@ -44,5 +42,6 @@ CREATE TABLE rates (
 
 CREATE TABLE winners (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    lot_id INT(11) UNSIGNED NOT NULL
+    lot_id INT(11) UNSIGNED NOT NULL,
+    user_id INT(11) UNSIGNED NOT NULL
 )
