@@ -3,9 +3,9 @@
                 <h2 class="promo__title">Нужен стафф для катки?</h2>
                 <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
                 <ul class="promo__list">
-                    <?php foreach ($categories as $category_item) : ?>
-                        <li class="promo__item promo__item--<?= $category_item['code']; ?>">
-                            <a class="promo__link" href="index.php?category_item_id=<?= $category_item['id']; ?>"><?= htmlspecialchars($category_item['name']); ?></a>
+                    <?php foreach ($categories as $category) : ?>
+                        <li class="promo__item promo__item--<?= $category['code']; ?>">
+                            <a class="promo__link" href="index.php?category_id=<?= $category['id']; ?>"><?= htmlspecialchars($category['name']); ?></a>
                         </li>
                     <?php endforeach; ?>
                 </ul>
@@ -19,11 +19,11 @@
                     <?php foreach ($lots as $lot) : ?>
                         <li class="lots__item lot">
                             <div class="lot__image">
-                                <img src="lot.php?id=<?= $lot['id']; ?><?= htmlspecialchars($lot['image']); ?>" width="350" height="260" alt="<?= htmlspecialchars($lot_val['title']); ?>">
+                                <img src="lot.php?lot_id=<?= $lot['id']; ?><?= htmlspecialchars($lot['image']); ?>" width="350" height="260" alt="<?= htmlspecialchars($lot['title']); ?>">
                             </div>
                             <div class="lot__info">
                                 <span class="lot__category"><?= htmlspecialchars($lot['name']); ?></span>
-                                <h3 class="lot__title"><a class="text-link" href="lot.php?id=<?= $lot['id']; ?>"><?= htmlspecialchars($lot['title']); ?></a></h3>
+                                <h3 class="lot__title"><a class="text-link" href="lot.php?lot_id=<?= $lot['id']; ?>"><?= htmlspecialchars($lot['title']); ?></a></h3>
                                 <div class="lot__state">
                                     <div class="lot__rate">
                                         <span class="lot__amount">Стартовая цена</span>

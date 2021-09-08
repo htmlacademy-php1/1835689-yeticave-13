@@ -12,12 +12,12 @@ if(!$link) {
 }
 else {
    $sql = 'SELECT * FROM categories';
-      if($res = mysqli_query($link, $sql)) {
+   if ($res = mysqli_query($link, $sql)) {
       $categories = mysqli_fetch_all($res, MYSQLI_ASSOC);
    }
    else {
       $error = mysqli_error($link);
-      $content = include_template('error.php', ['error' => $error]);  
+      $content = include_template('error.php', ['error' => $error]);
    }
    $sql = 'SELECT `dt_add`, `title`, `image`, `cost`, `categories`.`name` FROM `lots`'
    . 'JOIN `categories` ON `lots`.`category_id` = `categories`.`id`'
@@ -27,8 +27,7 @@ else {
       $content = include_template('main.php', ['categories' => $categories, 'lots' => $lots]);
    }
    else {
-      $error = mysqli_error($link);
-      print("Ошибка MySQL: " . $error);
+      $content = include_template('error.php', ['error' => mysqli_error($link)]);
    }
 }
 
