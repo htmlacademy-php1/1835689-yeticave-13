@@ -12,23 +12,25 @@ if(!$link) {
 }
 else {
    $sql = 'SELECT * FROM categories';
+
    if ($res = mysqli_query($link, $sql)) {
       $categories = mysqli_fetch_all($res, MYSQLI_ASSOC);
-   }
-   else {
-      $error = mysqli_error($link);
-      $content = include_template('error.php', ['error' => $error]);
-   }
-   $sql = 'SELECT `dt_add`, `title`, `image`, `cost`, `categories`.`name` FROM `lots`'
-   . 'JOIN `categories` ON `lots`.`category_id` = `categories`.`id`'
-   . 'ORDER BY `dt_add` DESC LIMIT 6';
-      if($res = mysqli_query($link, $sql)) {
-      $lots = mysqli_fetch_all($res, MYSQLI_ASSOC);
-      $content = include_template('main.php', ['categories' => $categories, 'lots' => $lots]);
-   }
-   else {
-      $content = include_template('error.php', ['error' => mysqli_error($link)]);
-   }
+      $sql = 'SELECT `dt_add`, `title`, `image`, `cost`, `categories`.`name` FROM `lots`'
+         . 'JOIN `categories` ON `lots`.`category_id` = `categories`.`id`'
+         . 'ORDER BY `dt_add` DESC LIMIT 6';
+         if($res = mysqli_query($link, $sql)) {
+            $lots = mysqli_fetch_all($res, MYSQLI_ASSOC);
+            $content = include_template('main.php', ['categories' => $categories, 'lots' => $lots]);
+         }
+
+         else {
+            $content = include_template('error.php', ['error' => mysqli_error($link)]);
+         }
+      }
+      else {
+         $error = mysqli_error($link);
+         $content = include_template('error.php', ['error' => $error]);
+      }
 }
 
 print(include_template('layout.php', ['content' => $content, 'title' => 'YetiCave', 'categories' => $categories]));
